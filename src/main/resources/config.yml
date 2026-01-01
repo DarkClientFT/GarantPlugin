@@ -1,0 +1,354 @@
+storage:
+  type: "YAML" #MYSQL, SQLITE, YAML
+  mysql:
+    host: "localhost"
+    port: 3306
+    database: "unigarant"
+    username: "root"
+    password: "pass"
+    useSSL: false
+
+menu:
+  name: "Найти Гаранта сделки"
+  size: 27
+  material-send: "LIME_WOOL"
+  name-send: "&#05FB00▶ Создать заявку"
+  pos-send: 13
+  price: 125000
+  material-rules: "PAPER"
+  name-rules: "&0 "
+  lore-rules:
+    - " &6Как работает система с гарантами?"
+    - ""
+    - " &6&l&n▍&f Вызывая гаранта, вы подтверждаете, что ознакомлены"
+    - " &6&l&n▍&f ознакомлены с &#00D8FFправилами сделок с задействованием"
+    - " &6&l&n▍&f гаранта. Эти правила указаны в пункте правил"
+    - " &6&l&n▍&f сервера 1.8. Сделку с гарантом можно осуществлять"
+    - " &6&l&n▍&f только в случаях, где происходит покупка"
+    - " &6&l&n▍&f через &#00D8FFсайт сервера."
+    - " &6&l&n▍&f "
+    - " &6&l&n▍&f Сделку с гарантом необходимо открывать только в том"
+    - " &6&l&n▍&f случае, когда вы уже нашли продавца/покупателя."
+    - " &6&l&n▍&f Если вы не нашли, с кем меняетесь, вызывать"
+    - " &6&l&n▍&f гаранта бессмысленно, вы потеряете свои средства."
+    - " &6&l&n▍&f "
+    - " &6&l&n▍&f При вызове гаранта у вас автоматически списывается"
+    - " &6&l&n▍ &6125 000 монеток&f. Если сделка не состоится по вине"
+    - " &6&l&n▍&f одного из участников сделки, то вы не"
+    - " &6&l&n▍&f получите средства обратно на свой баланс."
+    - " &6&l&n▍&f Если в течение 10 минут после создания заявки"
+    - " &6&l&n▍&f гарант не явится, то сделка закрывается,"
+    - " &6&l&n▍&f игрок получает средства обратно."
+    - " &6&l▍&f Во всех остальных ситуациях возврат невозможен!"
+    - ""
+  pos-rule: 8
+
+menu_list:
+  title: "Список заявок на сделку"
+  text_wrapping:
+    enabled: true
+    max_line_length: 50
+    first_line_format_active: " &#FF7C00&n▍&r   &#CFAA98%messages_sdelki%"
+    continuation_line_format_active: " &#FF7C00&n▍&r   &#CFAA98%messages_sdelki_new%"
+    first_line_format_deal: " &#0ECEF4&n▍&r   &#CFAA98%messages_sdelki%"
+    continuation_line_format_deal: " &#0ECEF4&n▍&r   &#CFAA98%messages_sdelki_new%"
+
+  items:
+    decoration:
+      display_name: "&r &r&l&x&F&F&C&9&0&0&n&lt.me/kunidev"
+      material: "BLUE_STAINED_GLASS_PANE"
+      slots: [52,51,50,49,48,47,46]
+
+    stats_item:
+      display_name: '&r '
+      slot: 49
+      material: PLAYER_HEAD
+      lore:
+        - '&r &r&l&x&F&F&C&9&0&0&n&l▍&r&f&r'
+        - '&r &r&l&x&F&F&C&9&0&0&n&l▍&r&f Количество удачных сделок:&r&x&F&F&C&9&0&0 %success%'
+        - '&r &r&l&x&F&F&C&9&0&0&n&l▍&r&f Количество отмененных сделок:&r&x&F&F&C&9&0&0 %canceled%'
+        - '&r &r&l&x&F&F&C&9&0&0&n&l▍&r&f Заработано за все время:&r&x&F&F&C&9&0&0 %earned% монет'
+        - '&r &r&l&x&F&F&C&9&0&0&n&l▍&r&f&r'
+        - "&r "
+
+    next_page:
+      display_name: "&b▶&f Перейти на следующую страницу"
+      material: "NETHER_STAR"
+      slot: 53
+      lore: []
+
+    prev_page:
+      display_name: "&b◀&f Вернуться на предыдущую страницу"
+      material: "NETHER_STAR"
+      slot: 45
+      lore: []
+
+    active_deal:
+      display_name: "&#FF7C00❐ Заявка на сделку %player_name% ❐"
+      material: "ZOMBIE_HEAD"
+      slot: 46
+      lore:
+        - ""
+        - " &#FF7C00&n▍&r &fЗаявитель: &#CFAA98%player_name%"
+        - " &#FF7C00&n▍&r &fЗаявка создана: &#CFAA98%time_data%"
+        - " &#FF7C00&n▍&r &fСервер: &#CFAA98Лайт-1"
+        - " &#FF7C00&n▍&r &fОписание сделки:"
+        - "%wrapped_description%"
+        - ""
+        - " &#FF7C00&n&l◢&f &fДело находиться на рассмотрении"
+        - " &#FF7C00&l◤&f Стажер: &e%player_name_moder%"
+        - ""
+        - " &#0ECEF4&n&l◢&f &#31DE2A[ПКМ] &fОтменить сделку"
+        - " &#0ECEF4&l◤&f &#31DE2A[ЛКМ] &fЗакончить сделку"
+
+    deal_item:
+      display_name: "&#0ECEF4❐ Заявка на сделку %player_name% ❐"
+      material: "ZOMBIE_HEAD"
+      lore:
+        - ""
+        - " &#0ECEF4&n▍&r &fЗаявитель: &#CFAA98%player_name%"
+        - " &#0ECEF4&n▍&r &fЗаявка создана: &#CFAA98%time_data%"
+        - " &#0ECEF4&n▍&r &fСервер: &#CFAA98Лайт-1"
+        - " &#0ECEF4&n▍&r &fОписание сделки:"
+        - "%wrapped_description%"
+        - ""
+        - " &#0ECEF4▶ &#31DE2A[ЛКМ] &fПровести сделку с &e%player_name%"
+
+    no_active_deal:
+      display_name: "&#FF0000✘ &fНет активной рассматриваемой заявки."
+      material: "BARRIER"
+      slot: 46
+      lore:
+        - ""
+        - " &#FF0000&n▍&r &fЗдесь будет отображаться заявка,"
+        - " &#FF0000&n▍&r &fкоторую Вы возьмёте на рассмотрение."
+        - " &#FF0000&n▍&r"
+        - " &#FF0000&n▍&r &fНажмите на этот предмет, вы сможете быстро"
+        - " &#FF0000▍&r &fвынести по нему необходимый вердикт."
+        - ""
+
+messages:
+  only-player: "&fЭта команда только для игроков"
+  already-created: "&#FF2222▶ Заявка уже создана. &fВы не можете создать больше одной"
+  reload: "&aКонфиг перезагружен"
+  no-permission: "&cУ вас нет прав!"
+  garant-cannot-create: "&#FF2222▶ &fГаранты не могут создавать заявки!"
+  enter-description: "&6▶ &fЧтобы создать заявку, &#FFC900НАПИШИТЕ ОПИСАНИЕ СДЕЛКИ В ЧАТ"
+  wait: "&6▶ &fЗаявка на вызов гаранта &6успешно создана! &fВ течение 10 минут с вами &6в ЛС свяжется член модерации, &fлибо сделка будет отменена"
+  no-money: "&#FF2222▶ &fУ Вас &#FF2222недостаточно денег. &fСтоимость гаранта сделки: &#FF2222%amount% монеток"
+  timeout: "&#FF2222▶ &fВремя ожидания истекло. Заявка отменена, средства возвращены."
+  moderator-accepted: "&6▶ &fНайден гарант! Если &#FFC900%moderator%&f не появится в течение &#FFC90010-и минут&f, средства будут возвращены. Время принятия: %time%"
+  deal-accepted: "&#00FF00▶ Вы приняли заявку игрока %player%"
+  deal-accepted-notify: "&#00FF00▶ Вашу заявку принял гарант %moderator%"
+  deal-completed: "&#00FF00▶ Вы успешно завершили сделку"
+  deal-cancelled: "&#FF0000▶ Вы отменили сделку"
+  deal-cancelled-by-moder: "&#FF0000▶ Гарант &f%moderator% &#FF0000отклонил Ваш запрос. Причина: &f%messages_rejected_sdelka%"
+  deal-cancelled-by-player: "&#FF0000▶ &fВы отменили свою заявку. Средства возвращены."
+  player-left: "&#FF2222▶ Игрок %playername% вышел из игры.&f Сделка отменена."
+  cancel-prompt: "&#FF2222▶ &fВведите причину отмены сделки в чат:"
+  cannot-accept-own: "&#FF2222▶ &fВы не можете принять свою собственную заявку!"
+  moderator-left: "&#FF2222▶ Гарант вышел из игры.&f Сделка отменена, средства возвращены."
+  moderator-timeout: "&#FF2222▶ &fГарант не появился в течение &#FCC70010 минут&f. Сделка отменена, средства возвращены."
+  no-active-deal: "&#FF2222▶ &fУ вас нет активной заявки."
+  cannot-cancel-in-progress: "&#FF2222▶ &fНевозможно отменить заявку, пока идёт сделка с гарантом."
+
+  help:
+    - "&6▶ &fUniGarant &7- &fПомощь"
+    - "&7├/garant &7- &fОткрыть меню создания заявки"
+    - "&7├/garant cancel &7- &fОтменить свою заявку"
+    - "&7├/garant list &7- &fСписок активных заявок &8(модератор)"
+    - "&7├/garant stats &7- &fВаша статистика &8(модератор)"
+    - "&7├/garant reload &7- &fПерезагрузить конфиг &8(админ)"
+    - "&7└/garant help &7- &fПоказать эту справку"
+  stats-info:
+    - "&6▶ &fВаша статистика:"
+    - "&7├ &fУспешных сделок: &a%success%"
+    - "&7├ &fОтменённых сделок: &c%cancelled%"
+    - "&7└ &fЗаработано: &e%earned% монет"
+
+  moder-msg:
+    - " &#00EAFF&nA&#00EAFF&nn&#00EAFF&na&#00EAFF&nr&#00EAFF&nh&#00EAFF&ny &7| &eГарант &b▶ &6ВНИМАНИЕ! &fИгрок &#FF9B00%playername% &fна режиме &#FFC400A&#FFBE00n&#FFB800a&#FFB200r&#FFAD00h&#FFA700y&#FFA100-&#FF9B001 &6создал заявку &fна вызов гаранта - /garant list"
+
+  bossbar:
+    search:
+      text: "&6Идёт поиск гаранта... &fОсталось %time_search%"
+      color: "BLUE"
+      style: "SOLID"
+    deal:
+      text: "&#FCC700Идёт сделка. Не выходите из игры"
+      color: "YELLOW"
+      style: "SOLID"
+    moderator:
+      text: "&#FCC700У вас проходит сделка"
+      color: "YELLOW"
+      style: "SOLID"
+
+time:
+  search-time: 600
+  visit-time: 600
+sounds:
+  enabled: true
+
+  new-deal-notify:
+    sound: "BLOCK_LAVA_POP"
+    volume: 1.0
+    pitch: 1.0
+
+  deal-created:
+    sound: "ENTITY_PLAYER_LEVELUP"
+    volume: 0.8
+    pitch: 1.2
+
+  deal-accepted-player:
+    sound: "BLOCK_NOTE_BLOCK_CHIME"
+    volume: 1.0
+    pitch: 1.5
+
+  deal-accepted-moderator:
+    sound: "ENTITY_EXPERIENCE_ORB_PICKUP"
+    volume: 1.0
+    pitch: 1.0
+
+  deal-completed:
+    sound: "UI_TOAST_CHALLENGE_COMPLETE"
+    volume: 1.0
+    pitch: 1.0
+
+  deal-cancelled:
+    sound: "ENTITY_VILLAGER_NO"
+    volume: 1.0
+    pitch: 1.0
+
+  deal-timeout:
+    sound: "BLOCK_ANVIL_LAND"
+    volume: 0.5
+    pitch: 0.8
+
+  player-left:
+    sound: "ENTITY_ENDERMAN_TELEPORT"
+    volume: 1.0
+    pitch: 0.5
+
+  moderator-left:
+    sound: "ENTITY_ENDERMAN_TELEPORT"
+    volume: 1.0
+    pitch: 0.5
+
+  menu-click:
+    sound: "UI_BUTTON_CLICK"
+    volume: 0.5
+    pitch: 1.0
+
+  error:
+    sound: "ENTITY_VILLAGER_NO"
+    volume: 0.8
+    pitch: 0.8
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# посхалка: скоро выйдут /cheatreport с holyworld

@@ -1,0 +1,23 @@
+name: Garant
+version: {project:version}
+main: ru.Kirill.garantplugin.GarantPlugin
+api-version: '"1.16"
+depend: [Vault]
+authors: ["@JavaDeobfuscator", "@Smail299", "@kunidev", "@fichadev"]
+description: Плагин на гарант с HolyWorld Lite Anarchy
+commands:
+  garant:
+    aliases: [fichahentai]
+permissions:
+  unigarant.use:
+    default: true
+  unigarant.moderator:
+    default: op
+  unigarant.admin:
+    default: op
+  unigarant.*:
+    default: op
+    children:
+      unigarant.use: true
+      unigarant.moderator: true
+      unigarant.admin: true
